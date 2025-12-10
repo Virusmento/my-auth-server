@@ -1,1 +1,119 @@
-
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kuehne+Nagel — Україна</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: 'Roboto', sans-serif; background: linear-gradient(135deg, #cce0ff, #99ccff); color:#222; line-height:1.6; padding-top:80px; }
+    .header { background:#002f6c; color:#fff; padding:15px 20px; position:fixed; top:0; width:100%; z-index:100; box-shadow:0 4px 10px rgba(0,0,0,0.2); }
+    .header-container { display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:0 auto; }
+    .logo { font-weight:700; font-size:2rem; display:flex; align-items:center; gap:12px; color:#fff; text-decoration:none; }
+    .logo:hover { opacity:0.9; }
+    .burger-menu { font-size:2rem; cursor:pointer; color:#fff; transition:0.3s; }
+    .burger-menu:hover { transform:rotate(90deg); }
+    .overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); display:none; z-index:998; }
+    .mobile-menu { position:fixed; top:0; right:-100%; width:300px; height:100%; background:#002f6c; color:#fff; padding:70px 30px 30px; transition:0.4s ease; z-index:999; overflow-y:auto; }
+    .mobile-menu.active { right:0; }
+    .mobile-menu ul { list-style:none; }
+    .mobile-menu ul li { margin:25px 0; }
+    .mobile-menu ul li a { text-decoration:none; color:#fff; font-size:1.4rem; font-weight:500; display:flex; align-items:center; gap:15px; padding:10px; border-radius:8px; transition:0.3s; }
+    .mobile-menu ul li a:hover { background:#ffcc00; color:#002f6c; }
+    .mobile-menu .close-menu { position:absolute; top:20px; right:20px; font-size:2rem; cursor:pointer; color:#ffcc00; }
+    .job-call { background: linear-gradient(135deg, #ffcc00, #ff9900); padding:40px 20px; text-align:center; margin:20px auto 40px; max-width:1200px; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.2); }
+    .job-call h2 { font-size:2.4rem; color:#002f6c; margin-bottom:15px; }
+    .job-call p { font-size:1.3rem; color:#002f6c; margin-bottom:25px; font-weight:500; }
+    .job-call .contact-btn { background: linear-gradient(45deg, #004080, #00aaff); padding:18px 40px; font-size:1.3rem; border-radius:12px; color:#fff; text-decoration:none; font-weight:600; display:inline-block; box-shadow:0 6px 15px rgba(0,0,0,0.3); }
+    .job-call .contact-btn:hover { transform:translateY(-4px); background: linear-gradient(45deg, #0066cc, #00ccff); }
+    .advantages { padding:60px 20px; background: linear-gradient(135deg, #e6f0ff, #cce0ff); margin:40px auto; max-width:1200px; border-radius:16px; text-align:center; }
+    .advantages h2 { font-size:2.6rem; color:#002f6c; margin-bottom:50px; }
+    .advantages-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:30px; }
+    .adv-item { background:#fff; padding:30px 20px; border-radius:14px; box-shadow:0 8px 20px rgba(0,0,0,0.12); transition:0.4s; }
+    .adv-item:hover { transform:translateY(-10px) scale(1.03); box-shadow:0 15px 30px rgba(0,0,0,0.2); }
+    .adv-item i { font-size:3rem; color:#004080; margin-bottom:20px; }
+    .adv-item h3 { font-size:1.4rem; color:#002f6c; margin-bottom:12px; }
+    .adv-item p { color:#003366; }
+    .hero { padding:60px 20px; text-align:center; margin:40px auto; max-width:1200px; }
+    .hero h1 { font-size:4rem; color:#002f6c; margin-bottom:20px; font-weight:700; letter-spacing:-1px; }
+    .highlight-text { font-size:1.5rem; color:#004080; margin:30px 0; }
+    .company-info { max-width:900px; margin:50px auto; text-align:left; background:#fff; padding:40px; border-radius:16px; box-shadow:0 8px 25px rgba(0,0,0,0.1); }
+    .company-info h2, .company-info h3 { color:#002f6c; }
+    .cta-btn { background: linear-gradient(45deg, #004080, #00aaff); color:#fff; padding:18px 45px; font-size:1.4rem; border-radius:12px; text-decoration:none; display:inline-block; margin-top:30px; box-shadow:0 8px 20px rgba(0,0,0,0.2); }
+    .cta-btn:hover { transform:translateY(-4px); background: linear-gradient(45deg, #0066cc, #00ccff); }
+    .contact { padding:80px 20px; text-align:center; background:#002f6c; color:#fff; margin:40px auto 0; border-radius:16px 16px 0 0; }
+    .contact h2 { font-size:2.6rem; margin-bottom:20px; }
+    .contact p { font-size:1.4rem; }
+    .footer { background:#002f6c; color:#fff; text-align:center; padding:30px; font-size:0.9rem; margin-top:60px; }
+    .footer p { margin:8px 0; opacity:0.9; }
+    @media (max-width:768px) { body { padding-top:70px; } .hero h1 { font-size:2.8rem; } .job-call h2 { font-size:2rem; } .advantages-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <a href="./" class="logo"><i class="fas fa-truck"></i> Kuehne+Nagel</a>
+      <div class="burger-menu" id="burger-icon"><i class="fas fa-bars"></i></div>
+    </div>
+  </header>
+  <div class="overlay" id="overlay"></div>
+  <nav class="mobile-menu" id="mobile-menu">
+    <div class="close-menu" id="close-icon"><i class="fas fa-times"></i></div>
+    <ul>
+      <li><a href="./"><i class="fas fa-home"></i> Головна</a></li>
+      <li><a href="#services"><i class="fas fa-ship"></i> Послуги</a></li>
+      <li><a href="#about"><i class="fas fa-building"></i> Про нас</a></li>
+      <li><a href="#contact"><i class="fas fa-envelope"></i> Контакти</a></li>
+     <li><a href="?page=login"><i class="fas fa-sign-in-alt"></i> Вхід</a></li>
+      <li><a href="?page=register"><i class="fas fa-user-plus"></i> Реєстрація</a></li>
+    </ul>
+  </nav>
+  <section class="job-call" id="home">
+    <div class="job-call-content">
+      <h2>Приєднуйся до лідера світової логістики!</h2>
+      <p class="highlight-text">Kuehne+Nagel Україна шукає таланти у сфері морських, авіа, автомобільних перевезень та контрактної логістики.</p>
+      <a href="#contact" class="contact-btn">Надіслати резюме</a>
+    </div>
+  </section>
+  <section class="advantages">
+    <h2>Чому Kuehne+Nagel?</h2>
+    <div class="advantages-grid">
+      <div class="adv-item"><i class="fas fa-globe"></i><h3>Глобальна мережа</h3><p>100+ країн, 1300+ офісів, 83 000 співробітників</p></div>
+      <div class="adv-item"><i class="fas fa-clock"></i><h3>Стабільність з 1890 року</h3><p>Понад 130 років лідерства у логістиці</p></div>
+      <div class="adv-item"><i class="fas fa-award"></i><h3>Інновації</h3><p>myKN, AI, blockchain, цифрова логістика</p></div>
+      <div class="adv-item"><i class="fas fa-users"></i><h3>Кар'єрне зростання</h3><p>Міжнародні програми навчання та ротації</p></div>
+      <div class="adv-item"><i class="fas fa-heart"></i><h3>Корпоративна культура</h3><p>Diversity, sustainability, work-life balance</p></div>
+      <div class="adv-item"><i class="fas fa-euro-sign"></i><h3>Конкурентна зарплата</h3><p>+ бонуси, медстраховка, корпоративний транспорт</p></div>
+    </div>
+  </section>
+  <section class="hero">
+    <h1>Kuehne+Nagel Україна</h1>
+    <p class="highlight-text">Лідер №1 у світовій логістиці. Sea · Air · Road · Contract Logistics</p>
+    <div class="company-info">
+      <h2>Про компанію</h2>
+      <p class="center-text">З 1890 року Kuehne+Nagel забезпечує бездоганну логістику по всьому світу. В Україні ми працюємо з 1992 року і є №1 у морських та авіаперевезеннях.</p>
+      <h3>Місія</h3>
+      <p class="center-text">З'єднувати людей та товари через інноваційні та стійкі логістичні рішення.</p>
+    </div>
+    <a href="https://ua.kuehne-nagel.com" target="_blank" class="cta-btn">Офіційний сайт</a>
+  </section>
+  <section class="contact" id="contact">
+    <h2>Зв'язатися з нами</h2>
+    <p>Тел: +380 (44) 490-27-00<br>Email: uainfo@kuehne-nagel.com<br>HR: hr.ukraine@kuehne-nagel.com</p>
+  </section>
+  <footer class="footer">
+    <p>© 2025 Kuehne + Nagel Україна. Всі права захищено.</p>
+    <p>Розробник: Лапчинський В.М | Email: vadim.lapka@gmail.com</p>
+  </footer>
+  <script>
+    const burger = document.getElementById('burger-icon');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const overlay = document.getElementById('overlay');
+    const closeIcon = document.getElementById('close-icon');
+    burger.onclick = () => { mobileMenu.classList.add('active'); overlay.style.display = 'block'; };
+    closeIcon.onclick = overlay.onclick = () => { mobileMenu.classList.remove('active'); overlay.style.display = 'none'; };
+  </script>
+</body>
+</html>
